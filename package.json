@@ -1,0 +1,26 @@
+{
+  "name": "e-vaccine-remainder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivapriyabagari/e-vaccine-remainder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shivapriyabagari/e-vaccine-remainder/issues"
+  },
+  "homepage": "https://github.com/shivapriyabagari/e-vaccine-remainder#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.2"
+  }
+}
