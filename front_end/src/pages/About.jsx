@@ -1,13 +1,19 @@
 
 function About() {
   return (
-    <div className="container py-5">
-      <h1>About E-Vaccine Reminder</h1>
-      <p>
-        E-Vaccine Reminder is a web application concept designed to help
-        users organize vaccination information and upcoming dates.
+    <section className="container page-section">
+      <span className="eyebrow">ABOUT THE APP</span>
+      <h1 className="h2 mt-2">A simple way to stay organized</h1>
+      <p className="text-secondary">
+        E-Vaccine Reminder helps families keep child profiles and vaccination
+        dates together, with optional email and WhatsApp notifications.
       </p>
-    </div>
+      <div className="medical-note mt-4">
+        The app does not recommend vaccine timing or replace medical care.
+        Confirm schedules with a qualified healthcare professional and local
+        public-health guidance.
+      </div>
+    </section>
   );
 }
 

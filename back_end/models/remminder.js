@@ -22,7 +22,17 @@ const reminderSchema = new mongoose.Schema({
         type: String,
         enum: ["Pending", "Completed"],
         default: "Pending"
+    },
+
+    emailSentAt: {
+        type: Date,
+        default: null
+    },
+
+    whatsappSentAt: {
+        type: Date,
+        default: null
     }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("Reminder", reminderSchema);

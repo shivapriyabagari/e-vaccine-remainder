@@ -14,7 +14,24 @@ const userSchema = new mongoose.Schema({
 
     password: {
         type: String,
-        required: true
+        required: true,
+        select: false
+    },
+
+    phone: {
+        type: String,
+        trim: true
+    },
+
+    notifications: {
+        email: {
+            type: Boolean,
+            default: true
+        },
+        whatsapp: {
+            type: Boolean,
+            default: false
+        }
     },
 
     role: {
@@ -22,6 +39,6 @@ const userSchema = new mongoose.Schema({
         enum: ["user", "admin"],
         default: "user"
     }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);

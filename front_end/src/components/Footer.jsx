@@ -1,4 +1,6 @@
 
+const currentYear = new Date().getFullYear();
+
 function Footer() {
   return (
     <footer className="bg-dark text-white text-center py-4 mt-auto">
@@ -7,7 +9,7 @@ function Footer() {
           E-Vaccine Reminder — Stay Healthy, Stay Protected.
         </p>
         <small>
-          © {new Date().getFullYear()} E-Vaccine Reminder. All rights reserved.
+          © {currentYear} E-Vaccine Reminder. All rights reserved.
         </small>
       </div>
     </footer>

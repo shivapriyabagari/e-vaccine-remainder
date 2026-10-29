@@ -1,69 +1,21 @@
 const express = require("express");
 const User = require("../models/user.js");
+const requireAuth = require("../middleware/auth.js");
 
 const router = express.Router();
+router.use(requireAuth);
 
-// GET all users
-router.get("/", async (req, res) => {
+router.get("/me", async (req, res) => {
     try {
-        const users = await User.find();
-
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({
-            message: "Error getting users"
-        });
-    }
-});
-
-// GET one user
-router.get("/:id", async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id);
-
+        const user = await User.findById(req.user.id)
+            .select("name email phone notifications");
         if (!user) {
-            return res.status(404).json({
-                message: "User not found"
-            });
+            return res.status(404).json({ message: "Account not found" });
         }
-
-        res.json(user);
+        return res.json({ user });
     } catch (error) {
-        res.status(500).json({
-            message: "Error getting user"
-        });
-    }
-});
-
-// UPDATE user
-router.put("/:id", async (req, res) => {
-    try {
-        const user = await User.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
-        );
-
-        res.json(user);
-    } catch (error) {
-        res.status(500).json({
-            message: "Error updating user"
-        });
-    }
-});
-
-// DELETE user
-router.delete("/:id", async (req, res) => {
-    try {
-        await User.findByIdAndDelete(req.params.id);
-
-        res.json({
-            message: "User deleted successfully"
-        });
-    } catch (error) {
-        res.status(500).json({
-            message: "Error deleting user"
-        });
+        console.error("Failed to fetch account:", error.message);
+        return res.status(500).json({ message: "Failed to fetch account" });
     }
 });
 
